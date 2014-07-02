@@ -1,0 +1,18 @@
+'use strict';
+
+describe('filter', function() {
+
+	  beforeEach(module('meFilters'));
+
+	  describe(': dateFilter: ', function() {
+
+	    it('should filter results by date',
+	        inject(function(mDateFilter) {
+	        	console.log(mDateFilter);
+	        	var items = [{"id":1,"time":"2014-04-23T21:00:00.000Z","tag":"אוכל","amount":50}, {"id":1,"time":"2014-03-23T21:00:00.000Z","tag":"אוכל","amount":250}, {"id":1,"time":"2014-05-23T21:00:00.000Z","tag":"אוכל","amount":150}];
+	        	expect(dateFilter(items, new Date()).length).toBe(1);
+//	        	console.log(dateFilter(items, new Date()));
+	    }));
+	  });
+	});
+
