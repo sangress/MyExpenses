@@ -37,25 +37,14 @@ app.post('/add-expense', expense.add);
 //app.delete('/expense', expense.delete);
 app['delete']('/expense/:id', expense.DELETE);
 
+// set current ip address
 var ipAddress = "10.0.0.7:";
 childProcess.exec('hostname -I', function(error, stdout, stderr) {
 	ipAddress = stdout.split(" ")[0] + ":";
 });
 
-/*function doSomethingAsync() {
-	  var deferred = q.defer();
-	  setTimeout(function() {
-	    deferred.resolve('hello world');
-	  }, 500);
-
-	  return deferred.promise;
-	}
-
-doSomethingAsync().then(function(val) {
-  console.log('Promise Resolved!', val);
-});*/
-
-
+// set chrome child process
+// maybe you need to change it to fit your system
 if (!process.argv[2]) {
 	var spawn = childProcess.spawn,
 	url = 'http://' + ipAddress + app.get('port') + '/app',
@@ -72,14 +61,6 @@ if (!process.argv[2]) {
 
 function listenCallback() {
 	console.log('Express server listening on port ' + app.get('port'));
-	
-/*    exec("chromium-browser --kiosk http://example.com", function(error, stdout, stderr) {
-        console.log("stdout: " + stdout);
-        console.log("stderr: " + stderr);
-        if (error !== null) {
-            console.log("exec errror: " + error);
-        }
-    });*/
 }
 
 http.createServer(app).listen(app.get('port'), listenCallback);
