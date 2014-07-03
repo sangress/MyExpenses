@@ -47,7 +47,7 @@ childProcess.exec('hostname -I', function(error, stdout, stderr) {
 // maybe you need to change it to fit your system
 if (!process.argv[2]) {
 	var spawn = childProcess.spawn,
-	url = 'http://' + ipAddress + app.get('port') + '/app',
+	url = 'http://localhost:' + app.get('port') + '/app',
 	args = ['--temp-profile', '--app=' + url, '--start-maximized'],
 	chrome = spawn('chromium-browser', args);
 	chrome.on('exit', function(e) {
