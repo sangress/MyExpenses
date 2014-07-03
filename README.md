@@ -13,7 +13,7 @@ Run:
 <br />
 
 Or run it as a regular WebApp:
-<code>nodejs app.js WebApp</code>
+<code>nodejs app.js webapp</code>
 
 You can also create a shell script with this command for your comfort.
 
