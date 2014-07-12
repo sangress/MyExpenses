@@ -32,10 +32,10 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get('/expenses', expense.getAll);
-app.post('/add-expense', expense.add);
+app.get('/expense', expense.getAll);
+app.post('/expense', expense.add);
 //app.delete('/expense', expense.delete);
-app['delete']('/expense/:id', expense.DELETE);
+app.delete('/expense/:id', expense.delete);
 
 // set current ip address
 var ipAddress = "10.0.0.7:";

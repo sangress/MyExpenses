@@ -35,6 +35,7 @@ exports.add = function (req, res) {
         + reqData.tag + '", ' + reqData.amount + ',' + db.escape(new Date(reqData.time)) + ')',
         function (err, results) {
             if (results) {
+                resData.data = results;
                 res.send(resData);
             } else if (err) {
                 res.send(err);
@@ -58,10 +59,16 @@ exports.getAll = function (req, res) {
     db.end();
 };
 
-exports.DELETE = function (req, res) {
-    var reqData = req.body;
-    res.send({params: req.params});
-    console.log(req.params);
+exports.delete = function (req, res) {
+    var id = null;
+    if (req && req.params && req.params.id) {
+        id = req.params.id;
+        var db = DB.connect();
+        db.query('DELETE FROM `expense` WHERE ?', {id: id}, function(err, result) {
+            console.log(result);
+        });
+    }
+    res.send({id: id});
 };
 
 exports.update = function (req, res) {

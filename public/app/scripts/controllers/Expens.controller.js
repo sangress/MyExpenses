@@ -15,29 +15,33 @@ angular.module('myExpensesApp')
 
         $rootScope.filterDate = new Date();
 
-        var getExpenses = function () {
-            Expense.getAll().success(function (data) {
-                $scope.expenses = data.result;
+        Expense.get({id: ''}, function(data) {
+            $scope.expenses = data.result;
+        });
+
+        $scope.deleteExpense = function(id) {
+            Expense.delete({id: id}, function(resource) {
+                angular.forEach($scope.expenses, function (expense, i) {
+                    if (expense.id == resource.id) {
+                        $scope.expenses.splice(i, 1);
+                    }
+                });
             });
         };
-        getExpenses();
 
-        $scope.addExpense = function () {
+        $scope.addExpense = function() {
             if ($scope.time.getTime)
                 $scope.time = $scope.time.getTime();
-
-            var exp = Expense.create($scope.time, $scope.tag, $scope.amount);
-            exp.save();
-            $scope.expenses.push(exp.flat());
-        };
-
-        $scope.delteExpense = function (id) {
-            angular.forEach($scope.expenses, function (expense, i) {
-                if (expense.id == id) {
-                    $scope.expenses.splice(i, 1);
-                }
+            var expense = {
+                time: $scope.time,
+                tag: $scope.tag,
+                amount: $scope.amount
+            };
+            Expense.save({id: null}, expense, function(resource) {
+                expense.id = resource.data.insertId;
+                $scope.expenses.unshift(expense);
             });
-            Expense.DELETE(id);
+
         };
 
         $scope.setOrder = function (orderBy) {
