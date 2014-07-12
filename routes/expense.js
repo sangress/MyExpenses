@@ -68,9 +68,19 @@ exports.delete = function (req, res) {
             console.log(result);
         });
     }
+    db.end();
     res.send({id: id});
 };
 
 exports.update = function (req, res) {
-
+    var db = DB.connect();
+    var expense = req.body;
+    db.query('UPDATE `expense` SET ? WHERE id=' + db.escape(expense.id), {tag: expense.tag, amount: expense.amount}, function(err, result) {
+        if (result) {
+            res.send(result);
+        } else if (err) {
+            res.send(err);
+        }
+    });
+    db.end();
 };

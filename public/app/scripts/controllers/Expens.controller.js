@@ -44,6 +44,11 @@ angular.module('myExpensesApp')
 
         };
 
+        $scope.updateExpense = function(expense) {
+            // TODO: check if really changed
+            Expense.update({id: expense.id}, expense);
+        };
+
         $scope.setOrder = function (orderBy) {
             if ($scope.orderBy == orderBy) {
                 orderBy = '-' + orderBy;

@@ -8,7 +8,8 @@ angular.module('myExpensesApp', [
   'meServices',
   'ui.bootstrap',
   'meFilters',
-  'ngAnimate'
+  'ngAnimate',
+  'meDirectives'
 ])
   .config(function ($routeProvider) {
     $routeProvider

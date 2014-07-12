@@ -101,3 +101,8 @@ div[ng-view].ng-enter {
     -webkit-animation: fadeInRight 0.5s;
     animation: fadeInRight 0.5s;
 }
+
+.view-mode{border: none;}
+.table-striped > tbody > tr:nth-child(2n+1) > td input.view-mode{
+    background-color: #f9f9f9;
+}

@@ -33,8 +33,8 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/expense', expense.getAll);
+app.put('/expense/:id', expense.update);
 app.post('/expense', expense.add);
-//app.delete('/expense', expense.delete);
 app.delete('/expense/:id', expense.delete);
 
 // set current ip address

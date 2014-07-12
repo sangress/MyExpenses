@@ -72,8 +72,8 @@
             <tbody>
             <tr ng-repeat="expense in expenses | orderBy: orderBy | filter: query | mDateFilter | setTotalAmount">
                 <td class="col-md-4">{{expense.time | date: 'fullDate'}}</td>
-                <td class="col-md-4">&#x20aa; {{expense.amount}}</td>
-                <td class="col-md-8" contenteditable="true">{{expense.tag}}</td>
+                <td class="col-md-4">&#x20aa; <input type="text" class="input" ng-model="expense.amount" in-place-edit ng-blur="updateExpense(expense)"/></td>
+                <td class="col-md-8"><input type="text" class="input" ng-model="expense.tag" in-place-edit ng-blur="updateExpense(expense)"/></td>
                 <td class="col-md-2"><span class="glyphicon glyphicon-remove-circle c-pointer"
                                            ng-click="deleteExpense(expense.id)"></span></td>
             </tr>

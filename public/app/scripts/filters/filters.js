@@ -21,7 +21,7 @@ meFilters.filter('setTotalAmount', function ($rootScope) {
     return function (items) {
         var total = 0;
         angular.forEach(items, function (item) {
-            total += item.amount;
+            total += parseInt(item.amount);
         });
         $rootScope.totalAmount = total;
         return items;
