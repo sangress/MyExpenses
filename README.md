@@ -10,6 +10,8 @@ Run <code>npm install</code>
 
 Before you run, you might need to change the child process on the spawn command to fit your machine's chrome browser. Current settings fit to Linux machine (chromium-browser)(there's an open issue for this).
 
+This version uses mysql for database, so you will need to create a table named `expense`
+
 Run:
 <code>nodejs app.js</code>
 <br />
